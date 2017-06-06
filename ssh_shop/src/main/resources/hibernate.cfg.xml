@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- 注意：hibernate核心配置文件必须在src下 -->
+<hibernate-configuration>
+	<session-factory>
+	
+	<!--  第一步：配置数据库信息(必须配置) 如果使用SSH整合，则直接在spring配置文件中使用bean进行dataSource配置即可-->
+<!--     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="hibernate.connection.url">jdbc:mysql:///spring_day04</property>
+	<property name="hibernate.connection.username">root</property>
+	<property name="hibernate.connection.password">123</property> -->
+	
+	
+	<!--  第二步：配置hibernate相关信息(可选择配置,和spring整合时可以把该文件的配置整合到beans.xml中!) -->
+	<property name="hibernate.show_sql">true</property>  <!-- 输出底层sql语句,注意：生产环境务必设置该属性为false!!-->
+	
+	<property name="hibernate.format_sql">true</property> <!-- 对底层sql语句格式化 -->
+	
+	<!-- 配置该属性为update，则hibernate会自动帮我们创建表（若表还不存在）或者更新表（若表已存在） -->
+	<property name="hibernate.hbm2ddl.auto">update</property> 
+	
+	<!-- 配置数据库方言，hibernate会根据配置的数据库在底层使用该数据库的特有语法（如分页,mysql用limit，oracle用rownumber） -->
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+	
+	<!-- 配置session与本地线程进行绑定,让session成为唯一对象 -->
+	<!-- 注意：如果hibernate和spring整合使用，则此处配置的属性值需要更改为如下配置形式!! -->
+	<!-- <property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property> -->
+	<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property> 
+	
+	
+	<!--  第三步：将映射文件放到核心配置文件中 (必须配置)-->
+	<!-- <mapping resource="com/chipmore/domain/Customer.hbm.xml"/> -->
+
+
+	</session-factory>
+</hibernate-configuration>
