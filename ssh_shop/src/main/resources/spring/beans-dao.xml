@@ -11,6 +11,6 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 <!-- 配置action,注意要设置成多例，切记！！！ -->
-
+<bean id="userDao" class="com.chipmore.shop.daoImp.UserDaoImp"></bean>
 
 </beans>

@@ -32,7 +32,7 @@
 	
 	
 	<!--  第三步：将映射文件放到核心配置文件中 (必须配置)-->
-	<!-- <mapping resource="com/chipmore/domain/Customer.hbm.xml"/> -->
+	<mapping resource="com/chipmore/shop/domain/User.hbm.xml"/> 
 
 
 	</session-factory>

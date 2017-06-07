@@ -8,8 +8,14 @@
 
 	<package name="shop" extends="struts-default" namespace="/">
 		<!-- action的创建交由spring工厂管理 -->
+		<!-- 配置跳转首页的action -->
 		<action name="index" class="indexAction">
 			<result name="index" >WEB-INF/jsp/index.jsp</result>
+		</action>
+		
+		<!-- 配置跳转注册页面的action -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="registPage" >WEB-INF/jsp/regist.jsp</result>
 		</action>
 	</package>
 	

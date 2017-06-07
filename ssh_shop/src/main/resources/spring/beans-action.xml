@@ -14,4 +14,7 @@
 <!-- 首页访问action -->
 <bean id="indexAction" class="com.chipmore.shop.index.IndexAction" scope="prototype"></bean>
 
+<!-- 跳转注册页面action -->
+<bean id="userAction" class="com.chipmore.shop.action.UserAction" scope="prototype"></bean>
+
 </beans>
