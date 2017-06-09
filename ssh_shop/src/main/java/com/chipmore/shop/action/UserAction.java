@@ -64,9 +64,27 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 
 	
+	/**
+	 * 用户注册的方法
+	 * @return
+	 */
+	public String regist(){
+		
+		//将数据插入数据库前应该先对表单提交的数据进行数据校验
+		//1.先将user对象存入数据库
+		//2.发送激活邮件
+		userService.saveUser(user);
+		
+		
+		
+		
+		return NONE;
+	}
+	
+	
+	
 	@Override
 	public User getModel() {
-		
 		return user;
 	}
 }
