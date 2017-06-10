@@ -17,4 +17,7 @@
 <!-- 跳转注册页面action -->
 <bean id="userAction" class="com.chipmore.shop.action.UserAction" scope="prototype"></bean>
 
+<!-- 配置验证码的action -->
+<bean id="checkImgAction" class="com.chipmore.shop.action.CheckImageAction" scope="prototype"></bean>
+
 </beans>

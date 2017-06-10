@@ -4,12 +4,28 @@
    <div class="span10 last">
 		<div class="topNav clearfix">
 			<ul>
-				<li id="headerLogin" class="headerLogin" style="display: list-item;">
-					<a href="./会员登录.htm">登录</a>|
-				</li>
-				<li id="headerRegister" class="headerRegister" style="display: list-item;">
-					<a href="${ pageContext.request.contextPath }/user_registPage.action">注册</a>|
-				</li>
+				<!-- 获取值栈中Context的值，要使用#前缀修饰 -->
+				<s:if test="#session.existUser == null">
+					<li id="headerLogin" class="headerLogin" style="display: list-item;">
+						<a href="${ pageContext.request.contextPath }/user_loginPage.action"">登录</a>|
+					</li>
+					<li id="headerRegister" class="headerRegister" style="display: list-item;">
+						<a href="${ pageContext.request.contextPath }/user_registPage.action">注册</a>|
+					</li>
+				</s:if>
+				
+				<s:else>
+					<li id="headerRegister" class="headerRegister" style="display: list-item;">
+						<s:property value="#session.existUser.name"/>
+					</li>
+					<li id="headerRegister" class="headerRegister" style="display: list-item;">
+						<a href="${ pageContext.request.contextPath }/user_registPage.action">我的订单</a>
+					</li>
+					<li id="headerRegister" class="headerRegister" style="display: list-item;">
+						<a href="${ pageContext.request.contextPath }/user_quit.action">退出</a>
+					</li>
+				</s:else>
+				
 				<li id="headerUsername" class="headerUsername"></li>
 				<li id="headerLogout" class="headerLogout">
 					<a>[退出]</a>|

@@ -7,16 +7,33 @@
 	<constant name="struts.devMode" value="false"></constant>
 
 	<package name="shop" extends="struts-default" namespace="/">
+	
+		<!-- 配置全局结果页面 -->
+		<global-results>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+		</global-results>
+	
+	
 		<!-- action的创建交由spring工厂管理 -->
 		<!-- 配置跳转首页的action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>
 		</action>
 		
-		<!-- 配置跳转注册页面的action -->
+		<!-- 配置用户相关动作的action -->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
+			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+			<!-- 因为需要把登录时用户的相关信息带入首页，所以这边登录成功后可以直接配置type="redirectAction",返回结果类型为跳转到下一个action即可 -->
+			<result name="loginSuccess" type="redirectAction">index</result>
+			<result name="quit" type="redirectAction">index</result>
+			<result name="checkCodeFail">/WEB-INF/jsp/regist.jsp</result>
+		</action>
+		
+		<!-- 验证码action -->
+		<action name="checkImg" class="checkImgAction">
 		</action>
 	</package>
 	

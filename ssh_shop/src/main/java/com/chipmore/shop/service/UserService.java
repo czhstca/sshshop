@@ -9,4 +9,11 @@ public interface UserService {
 	
 	//保存用户信息
 	public void saveUser(User user);
+
+	//通过激活码查找用户
+	public User findUserByCode(String code);
+
+	public void updateUser(User user);
+
+	public User login(User user);
 }

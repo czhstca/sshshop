@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.chipmore.shop.dao.UserDao;
 import com.chipmore.shop.domain.User;
 import com.chipmore.shop.service.UserService;
+import com.chipmore.shop.utils.MailUtils;
 import com.chipmore.shop.utils.UUIDUtils;
 
 @Service("userService")
@@ -34,6 +35,26 @@ public class UserServiceImpl implements UserService{
 		String code = UUIDUtils.getUUID() + UUIDUtils.getUUID();   //生成随机字符串
 		user.setCode(code);
 		userDao.saveUser(user);
+		//发送激活邮件
+		MailUtils.sendMail("aaa@shop.com", code);
+	}
+
+	@Override
+	public User findUserByCode(String code) {
+		User user = userDao.findUserByCode(code);
+		return user;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.updateUser(user);
+	}
+
+	@Override
+	public User login(User user) {
+		// TODO Auto-generated method stub
+		return userDao.login(user);
 	}
 
 }
