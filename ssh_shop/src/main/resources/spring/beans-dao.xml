@@ -10,7 +10,13 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<!-- 配置action,注意要设置成多例，切记！！！ -->
+<!-- 配置User dao -->
 <bean id="userDao" class="com.chipmore.shop.daoImp.UserDaoImp"></bean>
+
+<!-- 配置一级分类的 dao -->
+<bean id="categoryDao" class="com.chipmore.shop.daoImp.CategoryDaoImp"></bean>
+
+<!-- 配置产品的 dao -->
+<bean id="productDao" class="com.chipmore.shop.daoImp.ProductDaoImp"></bean>
 
 </beans>

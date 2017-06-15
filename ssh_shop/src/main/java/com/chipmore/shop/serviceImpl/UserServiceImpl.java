@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 		user.setCode(code);
 		userDao.saveUser(user);
 		//发送激活邮件
-		MailUtils.sendMail("aaa@shop.com", code);
+		MailUtils.sendMail(user.getEmail(), code);
 	}
 
 	@Override

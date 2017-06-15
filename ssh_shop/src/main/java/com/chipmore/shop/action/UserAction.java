@@ -24,13 +24,22 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	private User user = new User();
 	
-	private UserService userService;
+	@Override
+	public User getModel() {
+		return user;
+	}
 	
 	private String checkcode;  //验证码
 	
-	public void setCheckCode(String checkcode) {
+	public void setCheckcode(String checkcode) {
 		this.checkcode = checkcode;
 	}
+	
+	public String getCheckcode() {
+		return checkcode;
+	}
+	
+	private UserService userService;
 	
 	@Resource(name="userService")
 	public void setUserService(UserService userService) {
@@ -161,10 +170,5 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		//跳转页面
 		return "quit";
 	}
-	
-	
-	@Override
-	public User getModel() {
-		return user;
-	}
+
 }

@@ -35,6 +35,11 @@
 		<!-- 验证码action -->
 		<action name="checkImg" class="checkImgAction">
 		</action>
+		
+		<!-- 配置产品相关的action -->
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="findByPid">/WEB-INF/jsp/product.jsp</result>
+		</action>
 	</package>
 	
 </struts>

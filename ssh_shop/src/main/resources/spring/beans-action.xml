@@ -20,4 +20,9 @@
 <!-- 配置验证码的action -->
 <bean id="checkImgAction" class="com.chipmore.shop.action.CheckImageAction" scope="prototype"></bean>
 
+<!-- 配置一级分类的action -->
+<bean id="categoryAction" class="com.chipmore.shop.action.CategoryAction" scope="prototype"></bean>
+
+<!-- 配置产品的action -->
+<bean id="productAction" class="com.chipmore.shop.action.ProductAction" scope="prototype"></bean>
 </beans>
