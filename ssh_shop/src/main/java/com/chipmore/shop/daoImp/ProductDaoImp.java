@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.chipmore.shop.dao.ProductDao;
 import com.chipmore.shop.domain.Product;
+import com.chipmore.shop.utils.PageHibernateCallback;
 
 @Repository("productDao")
 public class ProductDaoImp extends HibernateDaoSupport implements ProductDao {
@@ -72,6 +73,35 @@ public class ProductDaoImp extends HibernateDaoSupport implements ProductDao {
 		Product product = this.getHibernateTemplate().get(Product.class, pid);
 		return product;
 	}
+
+	/**
+	 * 根据一级分类id查找其下对应商品数量
+	 */
+	@Override
+	public int findCountCid(Integer cid) {
+		String hql = "select count(*) from Product p where p.categorySecond.category.cid = ? ";
+		List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql, cid);
+		if(list != null && list.size() > 0){
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+	/**
+	 * 根据一级分类id查找其下所有商品详细信息
+	 */
+	@Override
+	public List<Product> findByPageCategory(Integer cid, int begin, int limit) {
+		//三表联查的hql写法!!
+		String hql = "select p from Product p join p.categorySecond cs join cs.category c where c.cid = ?";
+		//分页除了离线查询的另一种写法
+		List<Product> list = this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{cid}, begin, limit));
+		if(list != null && list.size() > 0){
+			return list;
+		}
+		return null;
+	}
+	
 	
 	
 	

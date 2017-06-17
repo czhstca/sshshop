@@ -20,10 +20,19 @@ public class Product {
 	
 	private Date pdate;
 
-	//二级分类的外键
+	//一个产品只能对应一种二级分类
+	private CategorySecond categorySecond;
 	
 	
 	
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
+	}
+
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
+	}
+
 	public Integer getPid() {
 		return pid;
 	}

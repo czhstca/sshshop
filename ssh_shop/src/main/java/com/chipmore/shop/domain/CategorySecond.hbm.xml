@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.chipmore.shop.domain.CategorySecond" table="categorysecond">
+		<id name="csid" column="csid">
+			<generator class="native"></generator>
+		</id>
+	
+		<property name="csname" column="csname"></property>
+		
+		<!-- 配置二级分类和一级分类的多对一映射关系 -->
+		<many-to-one name="category" class="com.chipmore.shop.domain.Category" column="cid" lazy="false"></many-to-one>
+		
+		<!-- 配置二级分类和产品的一对多映射关系 -->
+		<set name="productList">
+			<key column="csid"></key>
+			<one-to-many class="com.chipmore.shop.domain.Product"/>
+		</set>
+	</class>
+
+</hibernate-mapping>
