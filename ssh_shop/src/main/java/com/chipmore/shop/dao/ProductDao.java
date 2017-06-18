@@ -16,4 +16,8 @@ public interface ProductDao {
 
 	List<Product> findByPageCategory(Integer cid, int begin, int limit);
 
+	List<Product> findByPageSecondCategory(Integer csid, int begin, int limit);
+
+	int findCountCsid(Integer csid);
+
 }

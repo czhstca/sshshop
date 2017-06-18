@@ -25,10 +25,20 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	
 	private Integer cid;  //接收页面上传来的一级分类id
 	
+	private Integer csid;  //接收页面上传来的二级分类id
+	
 	private int page;  //接收页面传来的当前页数
 	
 	public void setPage(int page) {
 		this.page = page;
+	}
+
+	public Integer getCsid() {
+		return csid;
+	}
+
+	public void setCsid(Integer csid) {
+		this.csid = csid;
 	}
 
 	private CategoryService categoryService;
@@ -68,7 +78,7 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	}
 
 	/**
-	 * 根据一级分类id查找其下的所有二级分类
+	 * 根据一级分类id查找其下的所有商品
 	 * @return
 	 */
 	public String findByCategory(){
@@ -83,6 +93,19 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		return "findByCid";
 	}
 
+	/**
+	 * 根据二级分类id查找其下所有的商品
+	 * @return
+	 */
+	public String findBySecondCategory(){
+		
+		PageBean<Product> pageBean = productService.findByPageSecondCategory(csid,page);
+		
+		ValueStack stack = ActionContext.getContext().getValueStack();
+		stack.set("pageBean", pageBean);
+		
+		return "findByCsid";
+	}
 
 	
 }

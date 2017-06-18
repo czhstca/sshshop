@@ -15,4 +15,6 @@ public interface ProductService {
 
 	PageBean<Product> findByPageCategory(Integer cid, int page);
 
+	PageBean<Product> findByPageSecondCategory(Integer csid, int page);
+
 }

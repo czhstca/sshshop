@@ -101,6 +101,36 @@ public class ProductDaoImp extends HibernateDaoSupport implements ProductDao {
 		}
 		return null;
 	}
+
+	/**
+	 * 根据二级分类id查找其下商品数量
+	 */
+	@Override
+	public int findCountCsid(Integer csid) {
+		String hql = "select count(*) from Product p where p.categorySecond.csid = ? ";
+		List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql, csid);
+		if(list != null && list.size() > 0){
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+	
+	/**
+	 * 根据二级分类id查找其下所有商品详细信息
+	 */
+	@Override
+	public List<Product> findByPageSecondCategory(Integer csid, int begin, int limit) {
+		String hql = "select p from Product p join p.categorySecond cs where cs.csid = ?";
+		
+		//分页除了离线查询的另一种写法
+		List<Product> list = this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{csid}, begin, limit));
+		if(list != null && list.size() > 0){
+			return list;
+		}
+		return null;
+	}
+
+
 	
 	
 	
