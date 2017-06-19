@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="com.chipmore.shop.domain.Order" table="orders">
+		<id name="oid" column="oid">
+			<generator class="native"></generator>
+		</id>
+	
+		<property name="total" column="total"></property>
+		<property name="ordertime" column="ordertime"></property>
+		<property name="state" column="state"></property>
+		<property name="name" column="name"></property>
+		<property name="addr" column="addr"></property>
+		<property name="phone" column="phone"></property>
+		
+		<!-- 关联关系 -->
+		<!-- 订单和用户为多对一的关系 -->
+		<many-to-one name="user" class="com.chipmore.shop.domain.User" column="uid"></many-to-one>
+		
+		<!-- 订单和订单项为一对多的关系 -->
+		<set name="orderItemSet" cascade="save-update">
+			<key column="oid"></key>
+			<one-to-many class="com.chipmore.shop.domain.OrderItem"/>
+		</set>
+	</class>
+
+</hibernate-mapping>

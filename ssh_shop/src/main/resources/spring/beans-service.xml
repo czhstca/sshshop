@@ -19,4 +19,7 @@
 <!-- 配置产品的 service -->
 <bean id="productService" class="com.chipmore.shop.serviceImpl.ProductServiceImpl"></bean>
 
+<!-- 配置订单的 service -->
+<bean id="orderService" class="com.chipmore.shop.serviceImpl.OrderServiceImpl"></bean>
+
 </beans>

@@ -11,6 +11,7 @@
 		<!-- 配置全局结果页面 -->
 		<global-results>
 			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
 		</global-results>
 	
 	
@@ -25,7 +26,6 @@
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
 			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
-			<result name="login">/WEB-INF/jsp/login.jsp</result>
 			<!-- 因为需要把登录时用户的相关信息带入首页，所以这边登录成功后可以直接配置type="redirectAction",返回结果类型为跳转到下一个action即可 -->
 			<result name="loginSuccess" type="redirectAction">index</result>
 			<result name="quit" type="redirectAction">index</result>
@@ -49,6 +49,11 @@
 			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
 			<result name="removeItem">/WEB-INF/jsp/cart.jsp</result>
 			<result name="myCart">/WEB-INF/jsp/cart.jsp</result>
+		</action>
+		
+		<!-- 配置订单相关的action -->
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="saveSuccess">/WEB-INF/jsp/order.jsp</result>
 		</action>
 	</package>
 	

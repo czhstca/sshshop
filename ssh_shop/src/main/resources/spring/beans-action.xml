@@ -28,4 +28,7 @@
 
 <!-- 配置购物车的action -->
 <bean id="cartAction" class="com.chipmore.shop.action.CartAction" scope="prototype"></bean>
+
+<!-- 配置 订单的action-->
+<bean id="orderAction" class="com.chipmore.shop.action.OrderAction" scope="prototype"></bean>
 </beans>
