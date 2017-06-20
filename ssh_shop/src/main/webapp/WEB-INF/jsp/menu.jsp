@@ -19,7 +19,7 @@
 						<s:property value="#session.existUser.name"/>
 					</li>
 					<li id="headerRegister" class="headerRegister" style="display: list-item;">
-						<a href="${ pageContext.request.contextPath }/user_registPage.action">我的订单</a>
+						<a href="${ pageContext.request.contextPath }/order_findOrderByUid.action?page=1">我的订单</a>
 					</li>
 					<li id="headerRegister" class="headerRegister" style="display: list-item;">
 						<a href="${ pageContext.request.contextPath }/user_quit.action">退出</a>

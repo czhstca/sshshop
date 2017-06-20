@@ -16,7 +16,7 @@
 		<many-to-one name="order" class="com.chipmore.shop.domain.Order" column="oid"></many-to-one>
 		
 		<!-- 订单项和产品为多对一的关系 -->
-		<many-to-one name="product" class="com.chipmore.shop.domain.Product" column="pid"></many-to-one>
+		<many-to-one name="product" class="com.chipmore.shop.domain.Product" column="pid" lazy="false"></many-to-one>
 	</class>
 
 </hibernate-mapping>

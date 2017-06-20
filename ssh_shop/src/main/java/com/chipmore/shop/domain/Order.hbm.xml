@@ -18,10 +18,10 @@
 		
 		<!-- 关联关系 -->
 		<!-- 订单和用户为多对一的关系 -->
-		<many-to-one name="user" class="com.chipmore.shop.domain.User" column="uid"></many-to-one>
+		<many-to-one name="user" class="com.chipmore.shop.domain.User" column="uid" lazy="false"></many-to-one>
 		
 		<!-- 订单和订单项为一对多的关系 -->
-		<set name="orderItemSet" cascade="save-update">
+		<set name="orderItemSet" lazy="false" cascade="save-update" >
 			<key column="oid"></key>
 			<one-to-many class="com.chipmore.shop.domain.OrderItem"/>
 		</set>

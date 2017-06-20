@@ -13,6 +13,8 @@ import com.chipmore.shop.domain.Order;
 import com.chipmore.shop.domain.OrderItem;
 import com.chipmore.shop.domain.User;
 import com.chipmore.shop.service.OrderService;
+import com.chipmore.shop.utils.PageBean;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -22,6 +24,8 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 	private Order order = new Order();
 	
 	private OrderService orderService;
+	
+	private Integer page;  //页数
 	
 	@Resource(name="orderService")
 	public void setOrderService(OrderService orderService) {
@@ -36,6 +40,11 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 	}
 	
 	
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+
 	/**
 	 * 生成订单的方法
 	 * @return
@@ -70,8 +79,32 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order> {
 		orderService.save(order);
 
 		//2.将订单对象显示到页面上,直接将订单对象存入值栈，在页面中获取即可
-		
+		//清空购物车
+		cart.clearCart();
 		return "saveSuccess";
 	}
+	
+	/**
+	 * 查询我的订单
+	 * @return
+	 */
+	public String findOrderByUid(){
+		//获取用户id
+		User user = (User)ServletActionContext.getRequest().getSession().getAttribute("existUser");
+		
+		PageBean<Order> pageBean = orderService.findByPageUid(user.getUid(),page);
+		//将分页数据放入值栈，最终显示到页面上
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		
+		return "findOrderByUidSuccess";
+	}
 
+	/**
+	 * 根据订单id查找订单
+	 * @return
+	 */
+	public String findByOid(){
+		order = orderService.findByOid(order.getOid());
+		return "findByOidSuccess";
+	}
 }
