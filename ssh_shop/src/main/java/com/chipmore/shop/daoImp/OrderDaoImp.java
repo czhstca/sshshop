@@ -64,4 +64,14 @@ public class OrderDaoImp extends HibernateDaoSupport implements OrderDao {
 	}
 	
 	
+	/**
+	 * 修改订单的操作
+	 */
+	@Override
+	public void updateOrder(Order currOrder) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().update(currOrder);
+	}
+	
+	
 }

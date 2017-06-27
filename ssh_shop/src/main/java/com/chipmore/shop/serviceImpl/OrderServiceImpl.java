@@ -63,10 +63,22 @@ public class OrderServiceImpl implements OrderService {
 		return pageBean;
 	}
 
+	/**
+	 * 根据订单编号查询订单信息
+	 */
 	@Override
 	public Order findByOid(Integer oid) {
 		// TODO Auto-generated method stub
 		return orderDao.findByOid(oid);
+	}
+
+	/**
+	 * 修改订单
+	 */
+	@Override
+	public void updateOrder(Order currOrder) {
+		// TODO Auto-generated method stub
+		orderDao.updateOrder(currOrder);
 	}
 	
 	

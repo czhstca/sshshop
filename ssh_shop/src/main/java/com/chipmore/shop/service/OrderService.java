@@ -11,5 +11,7 @@ public interface OrderService {
 
 	Order findByOid(Integer oid);
 
+	void updateOrder(Order currOrder);
+
 	
 }
