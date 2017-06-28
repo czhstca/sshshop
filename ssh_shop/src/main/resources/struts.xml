@@ -58,6 +58,19 @@
 			<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>
 			
 		</action>
+		
+		<!-- 配置后台管理员相关的action -->
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginFail">/admin/index.jsp</result>
+			<result name="loginSuccess">/admin/home.jsp</result>
+		</action>
+		
+		<!-- 配置后台一级分类管理的action -->
+		<action name="adminCategory_*" class="adminCategoryAction" method="{1}">
+			<result name="findAll">/admin/category/list.jsp</result>
+			<result name="saveSuccess" type="redirectAction">adminCategory_findAll.action</result>
+			<result name="deleteSuccess" type="redirectAction">adminCategory_findAll.action</result>
+		</action>
 	</package>
 	
 </struts>

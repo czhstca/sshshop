@@ -22,4 +22,6 @@
 <!-- 配置订单的 service -->
 <bean id="orderService" class="com.chipmore.shop.serviceImpl.OrderServiceImpl"></bean>
 
+<!-- 配置后台管理员的 service -->
+<bean id="adminUserService" class="com.chipmore.shop.serviceImpl.AdminUserServiceImpl"></bean>
 </beans>

@@ -32,6 +32,33 @@ public class CategoryDaoImp extends HibernateDaoSupport implements CategoryDao {
 		return null;
 	}
 	
+	/**
+	 * 保存一级分类的方法
+	 */
+	@Override
+	public void save(Category category) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().save(category);
+	}
+
+	/**
+	 * 根据id查找一级分类
+	 */
+	@Override
+	public Category findByCid(Integer cid) {
+		// TODO Auto-generated method stub
+		return this.getHibernateTemplate().get(Category.class, cid);
+	}
+
+	/**
+	 * 删除一级分类的方法
+	 */
+	@Override
+	public void delete(Category curcategory) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().delete(curcategory);
+	}
+	
 	
 	
 	

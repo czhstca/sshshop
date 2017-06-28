@@ -38,6 +38,7 @@
 	<mapping resource="com/chipmore/shop/domain/CategorySecond.hbm.xml"/> 
 	<mapping resource="com/chipmore/shop/domain/Order.hbm.xml"/> 
 	<mapping resource="com/chipmore/shop/domain/OrderItem.hbm.xml"/> 
+	<mapping resource="com/chipmore/shop/domain/AdminUser.hbm.xml"/> 
 	
 	</session-factory>
 </hibernate-configuration>

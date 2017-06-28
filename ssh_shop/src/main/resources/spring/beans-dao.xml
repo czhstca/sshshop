@@ -22,4 +22,7 @@
 <!-- 配置订单的 dao -->
 <bean id="orderDao" class="com.chipmore.shop.daoImp.OrderDaoImp"></bean>
 
+<!-- 配置后台管理员的dao -->
+<bean id="adminUserDao" class="com.chipmore.shop.daoImp.AdminUserDaoImpl"></bean>
+
 </beans>

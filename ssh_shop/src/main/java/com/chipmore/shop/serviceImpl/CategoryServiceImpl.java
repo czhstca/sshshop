@@ -27,6 +27,33 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDao.findAllCategory();
 	}
 	
+	/**
+	 * 保存一级分类的方法
+	 */
+	@Override
+	public void save(Category category) {
+		// TODO Auto-generated method stub
+		categoryDao.save(category);
+	}
+
+	/**
+	 * 根据id查找一级分类
+	 */
+	@Override
+	public Category findByCid(Integer cid) {
+		// TODO Auto-generated method stub
+		return categoryDao.findByCid(cid);
+	}
+
+	/**
+	 * 删除一级分类
+	 */
+	@Override
+	public void delete(Category curcategory) {
+		// TODO Auto-generated method stub
+		categoryDao.delete(curcategory);
+	}
+	
 	
 	
 	

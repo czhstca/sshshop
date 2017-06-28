@@ -31,4 +31,10 @@
 
 <!-- 配置 订单的action-->
 <bean id="orderAction" class="com.chipmore.shop.action.OrderAction" scope="prototype"></bean>
+
+<!-- 配置后台管理员的action -->
+<bean id="adminUserAction" class="com.chipmore.shop.action.AdminUserAction" scope="prototype"></bean>
+
+<!-- 配置后台一级分类管理的action -->
+<bean id="adminCategoryAction" class="com.chipmore.shop.action.AdminCategoryAction" scope="prototype"></bean>
 </beans>
