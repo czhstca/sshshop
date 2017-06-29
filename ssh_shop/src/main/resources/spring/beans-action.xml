@@ -37,4 +37,7 @@
 
 <!-- 配置后台一级分类管理的action -->
 <bean id="adminCategoryAction" class="com.chipmore.shop.action.AdminCategoryAction" scope="prototype"></bean>
+
+<!-- 配置后台二级分类管理的action -->
+<bean id="categorySecondAction" class="com.chipmore.shop.action.AdminCategorySecondAction" scope="prototype"></bean>
 </beans>

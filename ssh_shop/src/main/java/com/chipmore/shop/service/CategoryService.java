@@ -18,6 +18,8 @@ public interface CategoryService {
 
 	void delete(Category curcategory);
 
+	void update(Category category);
+
 	
 	
 	

@@ -24,4 +24,7 @@
 
 <!-- 配置后台管理员的 service -->
 <bean id="adminUserService" class="com.chipmore.shop.serviceImpl.AdminUserServiceImpl"></bean>
+
+<!-- 配置二级分类的 service -->
+<bean id="categorySecondService" class="com.chipmore.shop.serviceImpl.CategorySecondServiceImpl"></bean>
 </beans>

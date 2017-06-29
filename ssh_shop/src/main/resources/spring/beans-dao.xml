@@ -25,4 +25,7 @@
 <!-- 配置后台管理员的dao -->
 <bean id="adminUserDao" class="com.chipmore.shop.daoImp.AdminUserDaoImpl"></bean>
 
+<!-- 配置二级分类的dao -->
+<bean id="categorySecondDao" class="com.chipmore.shop.daoImp.CategorySecondDaoImp"></bean>
+
 </beans>

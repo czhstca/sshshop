@@ -14,4 +14,6 @@ public interface CategoryDao {
 
 	void delete(Category curcategory);
 
+	void update(Category category);
+
 }

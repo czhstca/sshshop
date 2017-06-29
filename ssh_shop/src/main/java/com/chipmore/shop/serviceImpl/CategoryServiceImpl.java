@@ -53,6 +53,15 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		categoryDao.delete(curcategory);
 	}
+
+	/**
+	 * 修改一级分类
+	 */
+	@Override
+	public void update(Category category) {
+		// TODO Auto-generated method stub
+		categoryDao.update(category);
+	}
 	
 	
 	

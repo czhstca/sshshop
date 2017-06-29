@@ -58,6 +58,15 @@ public class CategoryDaoImp extends HibernateDaoSupport implements CategoryDao {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().delete(curcategory);
 	}
+
+	/**
+	 * 修改一级分类的方法
+	 */
+	@Override
+	public void update(Category category) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().update(category);
+	}
 	
 	
 	

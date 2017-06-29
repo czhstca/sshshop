@@ -11,7 +11,7 @@
 	
 		<property name="cname" column="cname"></property>
 		
-		<set name="categorySecondList" lazy="false" fetch="join" order-by="csid" inverse="true">
+		<set name="categorySecondList" cascade="delete" lazy="false" fetch="join" order-by="csid" inverse="true">
 			<key column="cid"></key>
 			<one-to-many class="com.chipmore.shop.domain.CategorySecond"/>
 		</set>
