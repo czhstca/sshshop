@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!-- 配置单机环境下的quartz任务调度 -->
+<!-- 自定义quartz的jobFactory，将spring管理bean放到jobFactory，这样才能在job类里面通过注解注入bean -->   
+<bean id="jobFactory" class="com.chipmore.shop.quartz.MyJobFactory"></bean>
+
+<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->  
+<bean id="startQuertz" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+	<property name="jobFactory" ref="jobFactory"></property>
+	<property name="configLocation" value="classpath:quartz.properties" />
+	<!-- 管理trigger -->
+	<property name="triggers">  
+	     <list>  
+	         <ref bean="trigger_1"/>  
+	     </list>  
+	</property>  
+</bean>
+
+<!-- ********定时器1  ******** -->  
+<!-- 定义jobDetail -->  
+<bean id="detail_1" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+    <property name="jobClass" value="com.chipmore.shop.quartz.MyJobTest" /><!-- 这里指定job任务类 -->
+    <property name="durability" value="true" />
+    <property name="group" value="group" />
+    <property name="name" value="name" />
+</bean>
+
+<!-- 定义trigger -->  
+<bean id="trigger_1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+    <property name="jobDetail" ref="detail_1"></property>
+    <property name="cronExpression">  
+        <!-- <value>0/5 * * * * ?</value> --><!-- 测试使用每五秒运行一次 -->  
+        <value>0 30 10 * * ?</value> <!-- 测试每天10:15执行一次 -->
+    </property>  
+</bean>
+
+</beans>
